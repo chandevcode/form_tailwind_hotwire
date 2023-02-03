@@ -25,11 +25,9 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to contact_url(@contact), notice: "Contact was successfully created." }
-        format.json { render :show, status: :created, location: @contact }
+      flash[:notice] = "Contact created"
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        render :new, status: :unprocessable_entity
       end
     end
   end
@@ -37,13 +35,10 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1 or /contacts/1.json
   def update
     respond_to do |format|
-      if @contact.update(contact_params)
-        format.html { redirect_to contact_url(@contact), notice: "Contact was successfully updated." }
-        format.json { render :show, status: :ok, location: @contact }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
+     if @contact.update(contact.params) 
+      flash[:notice] = "Contact update"
+     else
+      render :new, status: :unprocessable_entity
     end
   end
 
