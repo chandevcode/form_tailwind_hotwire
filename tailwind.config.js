@@ -1,11 +1,8 @@
 module.exports = {
   daisyui: {
-    themes: ["dark", "light"],
+    themes: ["emerald", "dark", "light"],
   },
-  plugins: [
-    require("daisyui"),
-    require("@tailwindcss/typography")
-  ],
+  plugins: [require("daisyui")],
   content: [
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
